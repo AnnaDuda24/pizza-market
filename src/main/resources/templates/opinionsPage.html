@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: template(~{:: #opinions-content})}">
+
+<section id="opinions-content">
+    <div class="container">
+        <h1>Opinie</h1>
+        <table style="width: 100%">
+            <tr th:each="opinion: ${opinions}">
+                <td>
+                    <h3 th:text="${opinion.name}"></h3>
+                    <p th:text="${opinion.content}"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td><h3>Dodaj nową opinię</h3></td>
+            </tr>
+        </table>
+        <form method="post" th:object="${newOpinion}">
+            <div><input th:field="*{name}" type="text" placeholder="Nazwa" class="input" required></div>
+
+            <div><textarea th:field="*{content}" placeholder="Twoja opinia..." class="input" required></textarea></div>
+
+            <div>
+                <button class="btn">Dodaj</button>
+            </div>
+        </form>
+
+    </div>
+</section>
+</html>
